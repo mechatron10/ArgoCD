@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+		name: guestbook
+		namespace: argocd #(this is the namespace where the argocd is present)
+specs:
+	project: default # this is the name of the project 
+	source:
+		repoURL: <git-repo-link>
+		targetRevision: HEAD  # commit of the repo which will be used to refer to the manifests
+		path: guestbook # path of the manifests files inside the repository 
+  destination:
+	  server: <link-of-the-kubernetes-cluster>
+	  namespace: <namespace-where-the-application-will-be-deployed>
+	syncPolicy:
+		automated:
+			prune: true # use this to enable pruning
+			selfHeal: true # enable this option to let the selfHeal be running and available.		
