@@ -18,8 +18,12 @@ spec:
       kind: Namespace
 
   namespaceResourceWhitelist:
+  - group: ""
+    kind: Pod
   - group: apps
     kind: Deployment
+  - group: apps
+    kind: ReplicaSet
   - group: ""
     kind: ConfigMap
   - group: ""

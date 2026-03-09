@@ -6,7 +6,7 @@ metadata:
     app: nginx
   namespace: application
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: gcr.io/google-samples/gb-frontend:v5
+        image: nginx:latest
         ports:
         - containerPort: 80
