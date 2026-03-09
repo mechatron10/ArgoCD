@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: gcr.io/google-samples/gb-frontend:v5
         ports:
         - containerPort: 80
