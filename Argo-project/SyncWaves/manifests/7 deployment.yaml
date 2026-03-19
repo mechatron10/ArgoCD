@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: deployment
+metadata:
+  name: syncwaves-deployment
+  namespace: syncwaves
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sync-waves
+    template:
+      metadata:
+        labels:
+          app: sync-waves
+      spec:
+        serviceAccountName: syncwaves-sa
+        containers:
+          - name: sync-waves-container
+            image: "nginx:1.25"
+            ports:
+              - containerPort: 80
+            resources:
+              limits:
+                cpu: "500m"
+                memory: "256Mi"
+              requests:
+                cpu: "250m"
+                memory: "128Mi"
+            volumeMounts:
+              - name: config-volume
+                mountPath: /usr/share/nginx/html
+            env:
+              - name: api_key
+                valueFrom:
+                  secretKeyRef:
+                    name: syncwaves-secret
+                    key: api-key
+            volumes:
+              - name: config-volume
+                configMap:
+                  name: syncwaves-configmap
