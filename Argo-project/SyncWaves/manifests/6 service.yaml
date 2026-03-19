@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     app: "sync-waves"
-    ports:
-      - protocol: "TCP"
-        port: 80
-        targetPort: 80
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 80
