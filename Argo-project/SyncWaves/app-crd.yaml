@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/mechatron10/ArgoCD.git # this is the url of the repository where the manifests are present
     targetRevision: HEAD  # commit of the repo which will be used to refer to the manifests
-    path: ./SyncWaves/manifests/ # path of the manifests files inside the repository 
+    path: ./Argo-project/SyncWaves/manifests/ # path of the manifests files inside the repository 
   destination:
     server: https://kubernetes.default.svc # cluster url, for local cluster it is https://kubernetes.default.svc
     namespace: syncwaves # it is the namespace where the application will be deployed
